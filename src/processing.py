@@ -1,10 +1,14 @@
-def filter_by_state(data, state='EXECUTED'):
+from datetime import datetime
+from typing import Dict, List
+
+
+def filter_by_state(data: List[Dict[str, str]], state: str = "EXECUTED") -> List[Dict[str, str]]:
     '''Функция фильтрует список словарей по значению ключа "state"'''
     result = []
     # создаем пустой список для хранения отфильтрованных данных
     for item in data:
-        if 'state' in item and item['state']==state:
-        # проверяем, есть ли ключ 'state' и равен ли он нужному значению
+        if "state" in item and item["state"] == state:
+            # проверяем, есть ли ключ 'state' и равен ли он нужному значению
             result.append(item)
             # добавляем словарь в новый список, если он подходит
     return result
@@ -21,16 +25,16 @@ def filter_by_state(data, state='EXECUTED'):
 # Проверка функции
 # print(filter_by_state(transactions))  # По умолчанию ищет 'EXECUTED'
 
-from datetime import datetime
 
-def sort_by_date(date, descending=True):
-    '''Функция сортирует список словарей по ключу "data" возвращает список,
-отсортированный по дате (сортировка по умолчанию - убывание)'''
+def sort_by_date(date: List[Dict[str, str]], descending: bool = True) -> List[Dict[str, str]]:
+    """Функция сортирует список словарей по ключу "data" возвращает список,
+    отсортированный по дате (сортировка по умолчанию - убывание)"""
     sorted_date = date.copy()
     # копируем список, чтобы не изменять исходные данные
-    sorted_date.sort(key=lambda item: datetime.fromisoformat(item['date']), reverse=descending)
+    sorted_date.sort(key=lambda item: datetime.fromisoformat(item["date"]), reverse=descending)
     # сортируем по параметру key, преобразуя строку в объект datetime
     return sorted_date
+
 
 # Пример входных данных
 # transactions = [
@@ -43,5 +47,3 @@ def sort_by_date(date, descending=True):
 # Проверка функции
 # print(sort_by_date(transactions))  # По умолчанию сортировка по убыванию
 # print(sort_by_date(transactions, descending=False))  # Сортировка по возрастанию
-
-
