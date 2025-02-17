@@ -1,9 +1,9 @@
 from datetime import datetime
-from typing import Dict, List
+from typing import Any, Dict, List
 
 
-def filter_by_state(data: List[Dict[str, str]], state: str = "EXECUTED") -> List[Dict[str, str]]:
-    '''Функция фильтрует список словарей по значению ключа "state"'''
+def filter_by_state(data: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
+    """Функция фильтрует список словарей по значению ключа 'state'"""
     result = []
     # создаем пустой список для хранения отфильтрованных данных
     for item in data:
@@ -26,14 +26,10 @@ def filter_by_state(data: List[Dict[str, str]], state: str = "EXECUTED") -> List
 # print(filter_by_state(transactions))  # По умолчанию ищет 'EXECUTED'
 
 
-def sort_by_date(date: List[Dict[str, str]], descending: bool = True) -> List[Dict[str, str]]:
-    """Функция сортирует список словарей по ключу "data" возвращает список,
+def sort_by_date(data: List[Dict[str, Any]], descending: bool = True) -> List[Dict[str, Any]]:
+    """Функция сортирует список словарей по ключу 'date' возвращает список,
     отсортированный по дате (сортировка по умолчанию - убывание)"""
-    sorted_date = date.copy()
-    # копируем список, чтобы не изменять исходные данные
-    sorted_date.sort(key=lambda item: datetime.fromisoformat(item["date"]), reverse=descending)
-    # сортируем по параметру key, преобразуя строку в объект datetime
-    return sorted_date
+    return sorted(data, key=lambda item: datetime.fromisoformat(item["date"]), reverse=descending)
 
 
 # Пример входных данных
@@ -43,7 +39,7 @@ def sort_by_date(date: List[Dict[str, str]], descending: bool = True) -> List[Di
 #     {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
 #     {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
 # ]
-#
+
 # Проверка функции
 # print(sort_by_date(transactions))  # По умолчанию сортировка по убыванию
 # print(sort_by_date(transactions, descending=False))  # Сортировка по возрастанию
