@@ -16,6 +16,6 @@ def get_mask_account(account_number: Union[int, str]) -> str:
     # удаляем пробелы на случай передачи строки и преобразуем в строку
     if not account_str.isdigit():
         raise ValueError("Номер счета должен содержать только цифры.")
-    if len(account_str) < 4:
+    if len(account_str) < 6:
         raise ValueError("Номер счета должен содержать минимум 4 цифры.")
     return "**" + account_str[-4:]
