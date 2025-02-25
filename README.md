@@ -17,6 +17,42 @@ git clone https://github.com/RiSofi/Home_work_project
 ```
 poetry install
 ```
+
+## Тестирование
+Проект использует 'pytest' для автоматического тестирования функций.
+
+### Запуск тестов
+Для запуска тестов выполните команду:
+```
+pytest
+```
+или для более подробного вывода
+```
+pytest -v
+```
+### Покрытие тестами
+Тесты проверяют следующие функции:
+
+- filter_by_state(data, state) – фильтрация списка транзакций по статусу.
+
+- sort_by_date(data, descending=True) – сортировка списка транзакций по дате.
+
+- get_mask_card_number(card_number) – маскирование номера карты.
+
+- get_mask_account(account_number) – маскирование номера счета.
+
+- mask_account_card(input_data) – определение типа входных данных (номер карты или счета) и их маскирование.
+
+### Требования
+Перед запуском тестов убедитесь, что установленны необходимые зависимости для poetry:
+```
+poetry add --group dev pytest
+```
+В pytest для анализа покрытия кода надо поставить библиотеку pytest-cov:
+```
+poetry add --group dev pytest-cov
+```
+
 ## Автор
 Sofiya Ridnaya
 

@@ -29,7 +29,10 @@ def filter_by_state(data: List[Dict[str, Any]], state: str = "EXECUTED") -> List
 def sort_by_date(data: List[Dict[str, Any]], descending: bool = True) -> List[Dict[str, Any]]:
     """Функция сортирует список словарей по ключу 'date' возвращает список,
     отсортированный по дате (сортировка по умолчанию - убывание)"""
-    return sorted(data, key=lambda item: datetime.fromisoformat(item["date"]), reverse=descending)
+    try:
+        return sorted(data, key=lambda item: datetime.fromisoformat(item["date"]), reverse=descending)
+    except ValueError as e:
+        raise ValueError(f"Ошибка обработки даты: {e}")
 
 
 # Пример входных данных
