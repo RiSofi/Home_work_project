@@ -25,8 +25,7 @@ def test_get_mask_card_number_valid(card_number: str, expected: str) -> None:
         "abcd567812345678",
         "abcdkasdjnbgjbhg",
         "12345678123456789",
-        "2738469"
-        "",
+        "2738469" "",
         " ",
         None,
     ],
